@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>create student details</title>
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+</head>
+<body>
+
+       <div th:replace="~{navbar::navbar}"></div>
+        </br>
+       <div align="center">
+       <h2>Enter Student Details</h2>
+       </br>
+       <p th:text=${msg}></p>
+       <form th:action="@{/createstudent}" method="post" th:object="${student}">
+      
+       <div>
+       <label>First name:</label>
+       <input type="text" th:field="*{firstName}" placeholder="firstname"/>
+       </div>
+       <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>
+       
+       <div>
+       <label>Last name:</label>
+       <input type="text" th:field="*{lastName}" placeholder="lastname"/>
+       </div>
+       <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>
+       
+       <div>
+       <label>Email:</label>
+       <input type="email" th:field="*{email}" placeholder="email"/>
+       </div>
+       <p th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></p>
+       
+       <div>
+       <label>Mobile:</label>
+       <input type="text" th:field="*{mobile}" placeholder="mobile number"/>
+       </div>
+       <p th:if="${#fields.hasErrors('mobile')}" class="text-danger" th:errors="*{mobile}"></p>
+       
+       
+        
+        <button type="submit">Save</button>
+       </form>
+       
+       </div>
+</body>
+</html>
